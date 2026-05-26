@@ -7,12 +7,12 @@ export const projects = [
     tags: ["React", "Node.js", "Firebase", "CSS", "QR", "Multi-colegio"],
     type: "Web App https://asistencia.escuelapilotopardo.cl/",
     images: [
-      { src: "/src/assets/asistencia-1.png", caption: "Panel principal" },
-      { src: "/src/assets/asistencia-2.png", caption: "Registro QR" },
-      { src: "/src/assets/asistencia-3.png", caption: "Reportes" },
-      { src: "/src/assets/asistencia-4.png", caption: "Reportes" },
-      { src: "/src/assets/asistencia-5.png", caption: "Reportes" },
-      { src: "/src/assets/asistencia-6.png", caption: "Reportes" },
+      { src: "/public/asistencia-1.png", caption: "Panel principal" },
+      { src: "/public/asistencia-2.png", caption: "Registro QR" },
+      { src: "/public/asistencia-3.png", caption: "Reportes" },
+      { src: "/public/asistencia-4.png", caption: "Reportes" },
+      { src: "/public/asistencia-5.png", caption: "Reportes" },
+      { src: "/public/asistencia-6.png", caption: "Reportes" },
 
     ],
     details: {
@@ -77,10 +77,10 @@ export const projects = [
     tags: ["HTML", "CSS", "JavaScript"],
     type: "Sitio Web  www.cflowers.cl/",
     images: [
-      { src: "/src/assets/banner.png", caption: "Panel principal" },
-      { src: "/src/assets/cflowers1.png", caption: "Registro QR" },
-      { src: "/src/assets/nosotro.png", caption: "Reportes" },
-      { src: "/src/assets/catalogo.png", caption: "Reportes" },
+      { src: "/public/banner.png", caption: "Panel principal" },
+      { src: "/public/cflowers1.png", caption: "Registro QR" },
+      { src: "/public/nosotro.png", caption: "Reportes" },
+      { src: "/public/catalogo.png", caption: "Reportes" },
 
     ],
     details: {
@@ -135,10 +135,10 @@ export const projects = [
     tags: ["React Native", "js", "En desarrollo"],
     type: "https://gaspar-coral.vercel.app/ ",
      images: [
-      { src: "/src/assets/1.png", caption: "Panel principal" },
-      { src: "/src/assets/2.png", caption: "Registro QR" },
-      { src: "/src/assets/3.png", caption: "Reportes" },
-      { src: "/src/assets/4.png", caption: "Reportes" },
+      { src: "/public/1.png", caption: "Panel principal" },
+      { src: "/public/2.png", caption: "Registro QR" },
+      { src: "/public/3.png", caption: "Reportes" },
+      { src: "/public/4.png", caption: "Reportes" },
 
     ],
     details: {
