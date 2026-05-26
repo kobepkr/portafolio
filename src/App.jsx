@@ -115,9 +115,9 @@ export default function Portfolio() {
     <div
       style={{
         fontFamily: "'DM Sans', -apple-system, sans-serif",
-        maxWidth: 760,
+        maxWidth: 1200,
         margin: "0 auto",
-        padding: "0 2rem 4rem",
+        padding: "0 1rem 4rem",
         color: "#111",
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(12px)",
