@@ -157,7 +157,7 @@ export default function Portfolio() {
           <em style={{ color: "#999", fontStyle: "italic" }}>Desarrollador Web</em>
         </h1>
         <p style={{ fontSize: 16, color: "#666", lineHeight: 1.75, maxWidth: 500, marginBottom: "1.75rem" }}>
-          Ingeniero en Informática especializado en frontend moderno. Construyo sitios web rápidos, limpios y accesibles para empresas que quieren destacar en el mundo digital.
+          Ingeniero en Informática especializado en frontend moderno. Construyo sitios web rápidos, limpios y accesibles para empresas que buscan destacar en el mundo digital.
         </p>
         <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
           <a href="mailto:victor@correo.com"><button className="btn-primary">Escríbeme →</button></a>
