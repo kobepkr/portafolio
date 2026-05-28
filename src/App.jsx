@@ -20,7 +20,7 @@ function ProjectModal({ project, onClose }) {
 
   const { title, type, tags, details, images, url } = project;
   const hasImages = images && images.length > 0;
-
+  
   return createPortal(
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={(e) => e.stopPropagation()}>
@@ -111,17 +111,38 @@ function ProjectModal({ project, onClose }) {
   );
 }
 
+/* ── LOADER COMPONENT ── */
+function Loader() {
+  return (
+    <div className="loader-overlay">
+      <div className="loader-container">
+        <div className="loader-spinner"></div>
+        <p className="loader-text">Cargando portafolio...</p>
+      </div>
+    </div>
+  );
+}
+
 /* ── MAIN ── */
 export default function Portfolio() {
   const [visible, setVisible] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [currentStartIndex, setCurrentStartIndex] = useState(0);
+  const [isHovering, setIsHovering] = useState(false);
+  const itemsToShow = 3;
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 80);
-    return () => clearTimeout(t);
-  }, []);
+
+useEffect(() => {
+  const t = setTimeout(() => {
+    setVisible(true);
+    setIsLoading(false); // ← Oculta el loader
+  }, 1000);
+  return () => clearTimeout(t);
+}, []);
+
 
   useEffect(() => {
     if (darkMode) {
@@ -155,6 +176,19 @@ export default function Portfolio() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Autoplay para el carrusel del stack
+  useEffect(() => {
+    if (isHovering) return;
+    
+    const interval = setInterval(() => {
+      setCurrentStartIndex(prev => 
+        prev >= stack.length - itemsToShow ? 0 : prev + 1
+      );
+    }, 3000);
+    
+    return () => clearInterval(interval);
+  }, [isHovering, stack.length, itemsToShow]);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -171,6 +205,8 @@ export default function Portfolio() {
 
   return (
     <>
+    {isLoading && <Loader />}
+      
       {selectedProject && (
         <ProjectModal
           project={selectedProject}
@@ -227,7 +263,7 @@ export default function Portfolio() {
                 </button>
               </a>
               <a href="mailto:victorlabbe26@gmail.com">
-                <button className="btn-primary email-btn">
+                <button onClick={() => scrollToSection("contacto")} className="btn-primary email-btn">
                   <i className="fa-solid fa-envelope"></i> Email
                 </button>
               </a>
@@ -283,15 +319,66 @@ export default function Portfolio() {
           </div>
         </section>
 
-        {/* STACK */}
+        {/* STACK - CARRUSEL CON 3 STACKS Y AUTOPLAY */}
         <section id="stack" style={{ marginBottom: "3.5rem" }}>
           <p className="section-label">Stack técnico</p>
-          <div className="stack-grid">
-            {stack.map((s) => (
-              <div key={s.name} className="stack-item">
-                <span style={{ fontSize: 18 }}>{s.icon}</span>
-                {s.name}
+          
+          {stack && stack.length > 0 && (
+            <div 
+              className="stack-carousel-3-container"
+              onMouseEnter={() => setIsHovering(true)}
+              onMouseLeave={() => setIsHovering(false)}
+            >
+              <button 
+                className="carousel-3-nav prev"
+                onClick={() => setCurrentStartIndex(prev => 
+                  prev === 0 ? Math.max(0, stack.length - itemsToShow) : prev - 1
+                )}
+              >
+                ‹
+              </button>
+              
+              <div className="stack-carousel-3-track">
+                <div 
+                  className="stack-carousel-3-slides"
+                  style={{
+                    transform: `translateX(-${currentStartIndex * (100 / itemsToShow)}%)`
+                  }}
+                >
+                  {stack.map((s, idx) => (
+                    <div key={idx} className="stack-carousel-3-item">
+                      <div className="stack-item-3">
+                        <img 
+                          src={s.image} 
+                          alt={s.name}
+                          className="stack-icon-3"
+                        />
+                        <span className="stack-name-3">{s.name}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
+              
+              <button 
+                className="carousel-3-nav next"
+                onClick={() => setCurrentStartIndex(prev => 
+                  prev >= stack.length - itemsToShow ? prev : prev + 1
+                )}
+              >
+                ›
+              </button>
+            </div>
+          )}
+          
+          {/* Indicadores */}
+          <div className="carousel-3-dots">
+            {stack && Array.from({ length: Math.ceil(stack.length / itemsToShow) }).map((_, idx) => (
+              <span 
+                key={idx}
+                className={`carousel-3-dot ${Math.floor(currentStartIndex / 1) === idx ? 'active' : ''}`}
+                onClick={() => setCurrentStartIndex(idx * 1)}
+              />
             ))}
           </div>
         </section>
@@ -299,14 +386,95 @@ export default function Portfolio() {
         {/* EXPERIENCIA */}
         <section id="experiencia" style={{ marginBottom: "3.5rem" }}>
           <p className="section-label">Experiencia & formación</p>
-          <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
             {experience.map((e, i) => (
-              <div key={i} style={{ display: "grid", gridTemplateColumns: "100px 1fr", gap: "1.25rem", paddingBottom: "1.5rem", borderBottom: i < experience.length - 1 ? "1px solid var(--border-color)" : "none" }}>
-                <span style={{ fontSize: 12, color: "var(--text-muted)", paddingTop: 3 }}>{e.year}</span>
-                <div>
-                  <div style={{ fontSize: 15, fontWeight: 500, marginBottom: 4, color: "var(--text-primary)" }}>{e.title}</div>
-                  <div style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 6 }}>{e.place}</div>
-                  <div style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.65 }}>{e.desc}</div>
+              <div key={i} style={{ 
+                display: "flex", 
+                flexWrap: "wrap", 
+                gap: "1.5rem",
+                paddingBottom: "1.5rem",
+                borderBottom: i < experience.length - 1 ? "1px solid var(--border-color)" : "none"
+              }}>
+                <span style={{ 
+                  fontSize: 12, 
+                  color: "var(--text-muted)", 
+                  minWidth: "100px",
+                  flexShrink: 0
+                }}>
+                  {e.year}
+                </span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontSize: 18, fontWeight: 600, marginBottom: 4, color: "var(--text-primary)" }}>
+                    {e.title}
+                  </div>
+                  <div style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 16 }}>
+                    {e.place}
+                  </div>
+                  <div style={{ 
+                    fontSize: 14, 
+                    color: "var(--text-secondary)", 
+                    lineHeight: 1.7,
+                    whiteSpace: "pre-wrap",
+                    textAlign: "left" 
+                  }}>
+                    {e.fullDescription.split('\n').map((line, idx) => {
+                      // Detectar títulos ###
+                      if (line.startsWith('###')) {
+                        return (
+                          <div key={idx} style={{ 
+                            fontSize: 16, 
+                            fontWeight: 600, 
+                            color: "var(--accent-color)", 
+                            marginTop: 16, 
+                            marginBottom: 12,
+                            letterSpacing: "-0.01em"
+                          }}>
+                            {line.replace('###', '').trim()}
+                          </div>
+                        );
+                      }
+                      // Detectar texto en negrita **texto**
+                      if (line.startsWith('**') && line.includes('**')) {
+                        const boldText = line.replace(/\*\*/g, '');
+                        return (
+                          <div key={idx} style={{ 
+                            fontSize: 14, 
+                            fontWeight: 600, 
+                            color: "var(--text-primary)", 
+                            marginTop: 12, 
+                            marginBottom: 6 
+                          }}>
+                            {boldText}
+                          </div>
+                        );
+                      }
+                      // Detectar listas con *
+                      if (line.startsWith('*')) {
+                        return (
+                          <div key={idx} style={{ 
+                            display: "flex", 
+                            alignItems: "flex-start", 
+                            gap: 8, 
+                            marginBottom: 6,
+                            paddingLeft: 8
+                          }}>
+                            <span style={{ color: "var(--accent-color)" }}>•</span>
+                            <span style={{ flex: 1 }}>{line.replace('*', '').trim()}</span>
+                          </div>
+                        );
+                      }
+                      // Línea vacía
+                      if (line.trim() === '') {
+                        return <div key={idx} style={{ marginBottom: 8 }} />;
+                      }
+                      // Texto normal
+                      return (
+                        <p key={idx} style={{ marginBottom: 8 }}>
+                          {line}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
             ))}
@@ -317,34 +485,10 @@ export default function Portfolio() {
         <section id="sobre-mi" style={{ marginBottom: "3.5rem" }}>
           <p className="section-label">Sobre mí</p>
           <p style={{ fontSize: 15, color: "var(--text-secondary)", lineHeight: 1.8, marginBottom: "1.5rem" }}>
-            Soy ingeniero en informática con pasión por el diseño de interfaces y la experiencia de usuario. He trabajado con instituciones educativas, empresas reales y proyectos propios, construyendo soluciones que realmente funcionan. Mi enfoque es entregar productos digitales que sean una carta de presentación sólida para cada cliente.
+          Pasión por el diseño de interfaces y la experiencia de usuario. He trabajado con instituciones educativas, empresas reales y proyectos propios, construyendo soluciones que realmente funcionan. Mi enfoque es entregar productos digitales que sean una carta de presentación sólida para cada cliente.
           </p>
-          <div className="about-grid">
-            {[{ num: "4+", lbl: "Proyectos completados" }, { num: "100%", lbl: "Enfoque en resultados" }].map((s) => (
-              <div key={s.lbl} style={{ background: "var(--card-bg)", borderRadius: 10, padding: "1rem 1.25rem" }}>
-                <div style={{ fontFamily: "'DM Serif Display', serif", fontSize: 34, letterSpacing: "-0.02em", lineHeight: 1, marginBottom: 4 }}>{s.num}</div>
-                <div style={{ fontSize: 12, color: "var(--text-muted)" }}>{s.lbl}</div>
-              </div>
-            ))}
-          </div>
-          <div className="methodology-badge" style={{
-            background: "linear-gradient(135deg, var(--card-bg), var(--border-color))",
-            borderRadius: 12,
-            padding: "1rem",
-            marginTop: "1rem",
-            borderLeft: "3px solid #3b82f6"
-          }}>
-            <div style={{ fontSize: 11, color: "#6366f1", marginBottom: 6, letterSpacing: "0.05em" }}>
-              MI PROCESO
-            </div>
-            <div style={{ fontSize: 13, color: "var(--text-secondary)", display: "flex", gap: 12, flexWrap: "wrap" }}>
-              {["🔍 Investigación", "📐 Prototipado", "💻 Desarrollo", "✅ Testing", "🚀 Despliegue"].map(step => (
-                <span key={step} style={{ background: "var(--bg-color)", padding: "4px 10px", borderRadius: 20, fontSize: 11 }}>
-                  {step}
-                </span>
-              ))}
-            </div>
-          </div>
+          
+         
         </section>
 
         {/* CONTACTO */}
@@ -357,7 +501,7 @@ export default function Portfolio() {
 
         {/* FOOTER */}
         <footer style={{ borderTop: "1px solid var(--border-color)", paddingTop: "1.5rem", display: "flex", justifyContent: "space-between", fontSize: 12, color: "var(--text-muted)", flexWrap: "wrap", gap: "0.5rem" }}>
-          <span>© 2025 Víctor Rodrigo Labbé Gutiérrez</span>
+          <span>© 2026 Víctor Rodrigo Labbé Gutiérrez</span>
           <span>Chile</span>
         </footer>
       </div>

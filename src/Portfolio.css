@@ -904,3 +904,346 @@ body.dark-mode .navbar-fixed {
     height: 160px;
   }
 }
+
+
+.stack-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: all 0.3s ease;
+}
+
+.stack-item img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.stack-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 16px rgba(59, 130, 246, 0.12);
+}
+
+
+/* ========== STACK CARRUSEL 3 ITEMS ========== */
+
+.stack-carousel-3-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.carousel-3-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  color: var(--accent-color);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.carousel-3-nav:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.stack-carousel-3-track {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.stack-carousel-3-slides {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.stack-carousel-3-item {
+  flex: 0 0 33.333%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.stack-item-3 {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.stack-item-3:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+}
+
+.stack-icon-3 {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.stack-name-3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.carousel-3-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.carousel-3-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.carousel-3-dot.active {
+  background: var(--accent-color);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.carousel-3-dot:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .stack-carousel-3-item {
+    flex: 0 0 50%;
+  }
+  
+  .stack-icon-3 {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .stack-name-3 {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stack-carousel-3-item {
+    flex: 0 0 100%;
+  }
+  
+  .carousel-3-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+  
+  .stack-carousel-3-container {
+    gap: 0.5rem;
+  }
+}
+
+/* ========== LOADER ========== */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  transition: opacity 0.5s ease;
+}
+
+.loader-container {
+  text-align: center;
+}
+
+.loader-spinner {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 20px;
+  border: 4px solid var(--border-light);
+  border-top: 4px solid var(--accent-color);
+  border-right: 4px solid var(--accent-color);
+  border-radius: 50%;
+  animation: loaderSpin 0.8s linear infinite;
+}
+
+.loader-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@keyframes loaderSpin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ========== STACK CARRUSEL 3 ITEMS ========== */
+.stack-carousel-3-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+}
+
+.carousel-3-nav {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  color: var(--accent-color);
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.carousel-3-nav:hover {
+  background: var(--accent-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.stack-carousel-3-track {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.stack-carousel-3-slides {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+.stack-carousel-3-item {
+  flex: 0 0 33.333%;
+  padding: 0.5rem;
+  box-sizing: border-box;
+}
+
+.stack-item-3 {
+  background: var(--card-bg);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.stack-item-3:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.15);
+}
+
+.stack-icon-3 {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.stack-name-3 {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.carousel-3-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1.5rem;
+}
+
+.carousel-3-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.carousel-3-dot.active {
+  background: var(--accent-color);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.carousel-3-dot:hover {
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .stack-carousel-3-item {
+    flex: 0 0 50%;
+  }
+  
+  .stack-icon-3 {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .stack-name-3 {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stack-carousel-3-item {
+    flex: 0 0 100%;
+  }
+  
+  .carousel-3-nav {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+  
+  .stack-carousel-3-container {
+    gap: 0.5rem;
+  }
+}

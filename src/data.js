@@ -7,7 +7,7 @@ export const projects = [
     tags: ["React", "Node.js", "Firebase", "CSS", "QR", "Multi-colegio"],
     type: "Web App",
     url: "https://asistencia.escuelapilotopardo.cl/",
-     thumbnail: "/asis1.png",
+    thumbnail: "/mainasis.png",
     images: [
       { src: "/asistencia-1.png", caption: "Panel principal" },
       { src: "/asistencia-2.png", caption: "Registro QR" },
@@ -69,14 +69,14 @@ export const projects = [
     },
   },
   {
-    id: "02",
+    id: "002",
     featured: false,
     title: "Landing Page — Comercializadora Flowers",
     desc: "Sitio web corporativo para CFlowers, empresa real de comercialización. Diseño moderno, responsivo y optimizado para conversión, con catálogo de productos y formulario de contacto.",
     tags: ["HTML", "CSS", "JavaScript"],
     type: "Sitio Web",
     url: "https://www.cflowers.cl/",
-    thumbnail: "/cflowers12.png",
+    thumbnail: "/banner.png",
     images: [
       { src: "/banner.png", caption: "Panel principal" },
       { src: "/cflowers1.png", caption: "Sección de productos" },
@@ -103,16 +103,39 @@ export const projects = [
       closing: "El proyecto resultó en una presencia digital profesional que aumentó las consultas de clientes potenciales.",
     },
   },
-  
   {
-    id: "03",
+    id: "003",
+    featured: false,
+    title: "Proyecto de Título",
+    desc: "Proyecto final de carrera desarrollado como Ingeniero en Informática. Aplicación completa con análisis de requerimientos, diseño de arquitectura, implementación y documentación técnica.",
+    tags: ["Full Stack", "Investigación", "Documentación"],
+    type: "Académico",
+    details: {
+      intro: "Proyecto final de carrera desarrollado para obtener el título de Ingeniero en Informática. Abarcó todas las etapas del ciclo de desarrollo de software, desde el levantamiento de requerimientos hasta el despliegue y documentación.",
+      sections: [
+        {
+          title: "Etapas del proyecto",
+          items: [
+            "Análisis y levantamiento de requerimientos.",
+            "Diseño de arquitectura de software.",
+            "Implementación frontend y backend.",
+            "Pruebas y validación del sistema.",
+            "Documentación técnica completa.",
+          ],
+        },
+      ],
+      closing: "Proyecto aprobado con calificación destacada, demostrando competencias integrales en desarrollo de software.",
+    },
+  },
+  {
+    id: "004",
     featured: false,
     title: "Página web - Escuela Gaspar Cabrales de Valparaíso",
     desc: "Página desarrollada para la institución en React con JS, donde aparece todo lo relacionado con la escuela.",
     tags: ["React", "JavaScript", "CSS"],
     type: "Sitio Web",
     url: "https://gaspar-coral.vercel.app/",
-    thumbnail: "/gasparmain.png",
+    thumbnail: "/1.png",
     images: [
       { src: "/1.png", caption: "Página principal" },
       { src: "/2.png", caption: "Información institucional" },
@@ -137,18 +160,45 @@ export const projects = [
       closing: "La página ha mejorado la comunicación entre la escuela y la comunidad educativa.",
     },
   },
- 
 ];
 
 export const stack = [
-  { icon: "⚛️", name: "React" },
-  { icon: "💚", name: "HTML" },
-  { icon: "📱", name: "React Native" },
-  { icon: "🟨", name: "JavaScript" },
-  { icon: "🎨", name: "CSS / Tailwind" },
-  { icon: "🟢", name: "Node.js" },
-  { icon: "🗄️", name: "Firebase" },
-  { icon: "🐙", name: "Git / GitHub" },
+  { 
+    name: "React", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg",
+  },
+  { 
+    name: "HTML5", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/html5.svg",
+  },
+  { 
+    name: "React Native", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/react.svg",
+  },
+  { 
+    name: "JavaScript", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/javascript.svg",
+  },
+  { 
+    name: "Tailwind CSS", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/tailwindcss.svg",
+  },
+  { 
+    name: "CSS3", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/css3.svg",
+  },
+  { 
+    name: "Node.js", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/nodedotjs.svg",
+  },
+  { 
+    name: "Firebase", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/firebase.svg",
+  },
+  { 
+    name: "Git", 
+    image: "https://cdn.jsdelivr.net/npm/simple-icons@v13/icons/git.svg",
+  },
 ];
 
 export const experience = [
@@ -156,12 +206,39 @@ export const experience = [
     year: "2025 — hoy",
     title: "Desarrollador Web Freelance",
     place: "Independiente · Chile",
-    desc: "Diseño y desarrollo de sitios y aplicaciones web para empresas que buscan presencia digital. Gestión completa del proyecto: desde el levantamiento de requerimientos hasta el despliegue.",
+    fullDescription: `Desarrollo de sitios web y aplicaciones para empresas e instituciones que buscan fortalecer su presencia digital. Experiencia trabajando de manera independiente en proyectos personalizados, encargándome de todo el proceso: levantamiento de requerimientos, diseño, desarrollo, implementación y mantención continua.
+
+### Experiencia destacada
+
+**CFlowers — Desarrollo y mantención web**
+Actualmente trabajo como desarrollador web para CFlowers, empresa dedicada a la venta mayorista de prendas de vestir especializada en saldos. Me encargué del desarrollo completo de su sitio web y actualmente realizo mantención, actualización de contenido y mejoras continuas según las necesidades del negocio.
+
+**Escuela Gaspar Cabrales — Desarrollo web institucional**
+Desarrollé el sitio web institucional de la escuela, enfocado en mejorar la comunicación con apoderados, estudiantes y funcionarios, entregando una plataforma clara y accesible para la comunidad educativa.
+
+**Escuela Piloto Pardo Villalón — Mantención y soporte informático**
+Trabajo en la actualización y administración del sitio web institucional, además de brindar soporte y apoyo informático en distintas necesidades tecnológicas del establecimiento.
+
+**Aplicación móvil para cliente independiente**
+Participé en el desarrollo de una aplicación móvil para un cliente independiente, colaborando en la implementación de funcionalidades y mejoras enfocadas en la experiencia de usuario.
+
+### Tecnologías y herramientas
+
+* HTML, CSS y JavaScript
+* React y React Native
+* WordPress
+* Desarrollo Front-End
+* Mantención y soporte web
+* Gestión y despliegue de proyectos
+
+### Enfoque de trabajo
+
+Me especializo en desarrollar soluciones digitales funcionales y adaptadas a las necesidades de cada cliente, manteniendo una comunicación cercana y entregando soporte continuo para asegurar el correcto funcionamiento de cada proyecto.`
   },
   {
     year: "2020 — 2023",
     title: "Ingeniería en Informática",
     place: "DuocUC de Viña del Mar",
-    desc: "Formación en desarrollo de software, bases de datos, arquitectura de sistemas y metodologías ágiles. Proyecto de título con calificación destacada.",
-  },
+    fullDescription: "Formación en desarrollo de software, bases de datos, arquitectura de sistemas y metodologías ágiles. Proyecto de título con calificación destacada."
+  }
 ];
